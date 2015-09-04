@@ -4,12 +4,12 @@ require("Services/Twilio.php");
 
 $response = new Services_Twilio_Twiml();
 
-$out_tel_to = "“]‘—æ“d˜b”Ô†";
-$sound_url_s1 = "ˆê’i–Ú‚É…‚ð‚Í‚Á‚Ä‰Î‚É‚©‚¯‚éBƒtƒ‰ƒ[ƒEƒH[ƒ^‚Ìo—ˆã‚ª‚èI.mp3";
+$out_tel_to = "è»¢é€å…ˆé›»è©±ç•ªå·";
+$sound_url_s1 = "ä¸€æ®µç›®ã«æ°´ã‚’ã¯ã£ã¦ç«ã«ã‹ã‘ã‚‹ã€‚ãƒ•ãƒ©ãƒ¯ãƒ¼ã‚¦ã‚©ãƒ¼ã‚¿ã®å‡ºæ¥ä¸ŠãŒã‚Šï¼.mp3";
 
 if (empty($_POST["Digits"])) {
     $gather = $response->gather(array('numDigits' => 1, 'timeout' => 30));
-    $gather->say("Twilio‚Ö‚æ‚¤‚±‚»Bƒ‚ƒƒbƒR‚Ì‚¨•ê‚³‚ñ‚ÌƒŒƒVƒs‚ª’m‚è‚½‚¢•û‚Í1‚ðB“d˜b‚Ì“]‘—‚Í2‚ðBŽÐ‰ïl3”N–Ú‚Ì•û‚Í3‚ðB“d˜b‚ÌI—¹‚Í4‚ð‚¨‚µ‚Ä‚­‚¾‚³‚¢B", array('language' => 'ja-jp'));
+    $gather->say("Twilioã¸ã‚ˆã†ã“ãã€‚ãƒ¢ãƒ­ãƒƒã‚³ã®ãŠæ¯ã•ã‚“ã®ãƒ¬ã‚·ãƒ”ãŒçŸ¥ã‚ŠãŸã„æ–¹ã¯1ã‚’ã€‚é›»è©±ã®è»¢é€ã¯2ã‚’ã€‚ç¤¾ä¼šäºº3å¹´ç›®ã®æ–¹ã¯3ã‚’ã€‚é›»è©±ã®çµ‚äº†ã¯4ã‚’ãŠã—ã¦ãã ã•ã„ã€‚", array('language' => 'ja-jp'));
 } elseif ($_POST["Digits"] == "1") {
     $response->play($sound_url, array("loop" => 1));
     $gather = $response->gather(array('numDigits' => 1, 'timeout' => 30));
@@ -17,8 +17,8 @@ if (empty($_POST["Digits"])) {
     $response->dial($out_tel_to);
     $gather = $response->gather(array('numDigits' => 1, 'timeout' => 30));
 } elseif ($_POST["Digits"] == "3") {
-    $response->say("ŽÐ‰ïl3”N–Ú‚Ì•ûAŠy‚µ‚¢ƒfƒ‚‚Ö‚æ‚¤‚±‚»B", array('language' => 'ja-jp'));
+    $response->say("ç¤¾ä¼šäºº3å¹´ç›®ã®æ–¹ã€æ¥½ã—ã„ãƒ‡ãƒ¢ã¸ã‚ˆã†ã“ãã€‚", array('language' => 'ja-jp'));
 } elseif ($_POST["Digits"] == "4") {
-    $response->say("Šy‚µ‚¢ƒfƒ‚‚Ì‚²—˜—p‚ ‚è‚ª‚Æ‚¤‚²‚´‚¢‚Ü‚µ‚½B", array('language' => 'ja-jp'));
+    $response->say("æ¥½ã—ã„ãƒ‡ãƒ¢ã®ã”åˆ©ç”¨ã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã—ãŸã€‚", array('language' => 'ja-jp'));
 }
 print $response;
